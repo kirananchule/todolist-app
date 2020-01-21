@@ -1,0 +1,7 @@
+.buttons{
+  
+}
+.todo:hover .buttons {
+ color: red;
+ display: block;
+}
