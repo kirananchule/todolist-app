@@ -9,7 +9,7 @@ class Todos extends React.Component {
         super(props);
         this.state = {
             todos: [],
-            filter: 'All'
+            filter: null
         };
         this.todoCounter = 1;
         this.addTodoToList = this.addTodoToList.bind(this);
@@ -44,7 +44,6 @@ class Todos extends React.Component {
         })
     }
 
-
     filterClicked(newFilter) {
         console.log('filter clicked: ', newFilter);
         this.setState({
@@ -52,12 +51,27 @@ class Todos extends React.Component {
         })
     }
 
+    handleRemoveTodo = (id) => {
+        console.log('item to remove', id);
+        
+        let stateCopy = this.state.todos.filter((item)=> {
+            return item.id !== id
+        })
+        
+        
+        
+        this.setState({
+            todos : stateCopy
+        })
+    }
+
     render() {
         return (
             <div style={{ display: 'block', maxWidth: '600px', textAlign: 'left', margin: '20px auto' }}>
                 <AddTodo onAddTodo={this.addTodoToList}></AddTodo>
-                <TodoList todos={this.state.todos} todoChange={this.onTodoChange} filter={this.state.filter}></TodoList>
-                <FilterButtons filterClicked={this.filterClicked}></FilterButtons>
+                <TodoList todos={this.state.todos} todoChange={this.onTodoChange} filter={this.state.filter}
+                 onRemoveTodo={this.handleRemoveTodo}></TodoList>
+                <FilterButtons filterClicked={this.filterClicked} filter={this.state.filter}></FilterButtons>
 
             </div>
         );

@@ -5,12 +5,11 @@ const FilterButtons =(props)=>{
             <Filter filterClicked={props.filterClicked} value={'All'}></Filter>
             <Filter filterClicked={props.filterClicked} value={'Completed'}></Filter>
             <Filter filterClicked={props.filterClicked} value={'Pending'}></Filter>
+            { props.filter && <div>Current Filter: {props.filter}</div>}
         </div>
     )
 }
 export default FilterButtons;
-
-
 const Filter = (props) => {
     const value = props.value;
     return(

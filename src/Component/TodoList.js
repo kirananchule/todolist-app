@@ -12,16 +12,12 @@ class TodoList extends React.Component {
             }
             return item;
         })
-
-        return (
+        
+       return (
 
             <ul>
-
-
-
-                {items.map((todo, i) => {
-
-                    return <Todo todo={todo} key={i} todoChange={() => this.props.todoChange(todo.id)} verifiedChange={this.props.verifiedChange}></Todo>
+             {items.map((todo, i) => {
+               return <Todo todo={todo} key={i} todoChange={() => this.props.todoChange(todo.id)} verifiedChange={this.props.verifiedChange} removeFromTodo={this.props.onRemoveTodo}></Todo>
                 })}
 
             </ul>
